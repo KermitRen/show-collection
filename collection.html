@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Collection</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/filters.css">
+    <link rel="stylesheet" href="css/collection.css">
+    <script src="js/utility.js" type="text/JavaScript"></script>
+    <script src="js/collection.js" type="text/JavaScript"></script>
+  </head>
+
+  <body>
+
+    <!-- Navigation Bar -->
+    <div id="navbar">
+      <a href="discover.html" id="logo"> </a>
+      <a href="discover.html" class="navItem">Discover</a> <div class="hBorder"></div>
+      <a id="selectedNavItem" class="navItem">My Collection</a> <div class="hBorder"></div>
+      <a href="about.html" class="navItem">About</a> <div class="hBorder"></div>
+      <div id="searchBarContainer">
+        <span>
+          <input type="text" autocomplete="off" spellcheck="false" placeholder="search">
+        </span>
+      </div>
+      <i class="material-icons" onclick="alert('Show info box about what the site can do')"> help_outline</i>
+      <i class="material-icons" onclick="alert('Go to settings page')"> settings</i>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent">
+      
+      <!-- Filter Tab -->
+      <div id="filterTab">
+        <div id="filters">
+          <h2>Select Filters here</h2>
+        </div>
+        <div id="filterHandle" onclick="toggleFilters()">
+          <i id="filterHandleIcon" class="material-icons">keyboard_arrow_right</i>
+        </div>
+      </div>
+      
+      <!-- Tv Show Gallery -->
+      <div id="gallery">
+
+        <div class="showPoster">
+          <img src="images/stranger things.jpg">
+          <div class="showHover">
+            <div class="showInfo">
+              <p class="showName">Stranger Things</p>  
+              <p class="showGenres">Mystery, Horror, Drama, Sci-Fi</p> 
+            </div>
+            <div class="showAdd">
+              <i class="material-icons">add_circle_outline</i>
+              <p class="addIconTooltip">Add show to your collection</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+  
+</html>

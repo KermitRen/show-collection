@@ -1,0 +1,11 @@
+
+- Implemet the filters and searchbar
+- Add minimum 200 shows
+- Shuffle shows on discover page
+- Implement the collection page
+- Design the about page
+- Implement help button
+- Implement settings button
+- Make Logo
+- Setup github pages
+- Make logo in chrometab

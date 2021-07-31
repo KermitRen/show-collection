@@ -1,0 +1,44 @@
+@import "colors";
+@import "fonts";
+@import "reset";
+
+#filterTab {
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+}
+
+#filters {
+    width: 0px;
+    height: 100%;
+    float: left;
+    background-color: $cinemaRed4;
+    text-align: center;
+    transition: width 1s;
+    overflow: hidden;
+}
+
+#filterHandle {
+    position: relative;
+    width: 25px;
+    height: 100%;
+    float: left;
+    background-color: $cinemaBlack;
+
+    i {
+        color: $cinemaRed2;
+        font-size: 2.5em;
+        text-align: center;
+        position:absolute;
+        transform-origin: 50% 50%;
+        transform: translate(-20%,0) rotate(0deg);
+        top: 42%;
+        transition: transform 0.5s;
+    }
+}
+
+
+#filterHandle:hover {
+    filter:brightness(80%);
+    cursor: pointer;
+}

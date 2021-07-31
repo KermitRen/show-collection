@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  color: white;
+  font-size: 16px;
+  font-family: Poppins, sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #800E13;
+  height: 100%;
+  position: relative;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  color: white;
+  font-size: 16px;
+  font-family: Poppins, sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #800E13;
+  height: 100%;
+  position: relative;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  padding: 1.5%;
+  margin-left: 25px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.showPoster {
+  width: 250px;
+  height: 370px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.showPoster img {
+  width: 250px;
+  height: 370px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.showPoster:hover {
+  cursor: pointer;
+}
+
+.showPoster:hover img {
+  -webkit-filter: blur(2.5px) brightness(60%);
+          filter: blur(2.5px) brightness(60%);
+}
+
+.showPoster:hover .showHover {
+  visibility: visible;
+}
+
+.showPoster:hover .showInfo, .showPoster:hover .showAdd {
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+  opacity: 1;
+}
+
+.showHover {
+  visibility: hidden;
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.showHover .showInfo {
+  position: absolute;
+  left: 15px;
+  top: 10px;
+  -webkit-transform: translate(-100px, 0px);
+          transform: translate(-100px, 0px);
+  opacity: 0.2;
+  -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: transform 0.5s, opacity 0.5s;
+  transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
+}
+
+.showHover .showInfo .showName {
+  font-size: 1.2em;
+  text-transform: capitalize;
+}
+
+.showHover .showInfo .showGenres {
+  font-size: 0.85em;
+  text-transform: capitalize;
+  margin-top: 8px;
+  width: 150px;
+}
+
+.showHover .showAdd {
+  position: absolute;
+  right: 15px;
+  bottom: 10px;
+  -webkit-transform: translate(100px, 0px);
+          transform: translate(100px, 0px);
+  opacity: 0.2;
+  -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: transform 0.5s, opacity 0.5s;
+  transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
+}
+
+.showHover .showAdd i {
+  font-size: 2.5em;
+}
+
+.showHover .showAdd i.add {
+  color: #38ab57;
+}
+
+.showHover .showAdd i.remove {
+  color: #AD2831;
+}
+
+.showHover .showAdd i:hover + p {
+  visibility: visible;
+}
+
+.showHover .showAdd p {
+  visibility: hidden;
+  position: absolute;
+  top: -10px;
+  left: -150px;
+  width: 132px;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/*# sourceMappingURL=collection.css.map */

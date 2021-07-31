@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "ACAA,AAAA,CAAC,CAAC;EACE,UAAU,EAAE,UAAU;EACtB,OAAO,EAAE,GAAG;EACZ,MAAM,EAAE,GAAG;CAMd;;AATD,AAKI,CALH,CAKG,IAAI,CAAC;EACD,KAAK,EAAE,KAAK;EACZ,IAAI,EAAE,IAAI;CACb;;ADLL,AAAA,CAAC,CAAC;EACE,KAAK,EEJG,KAAK;EFKb,SAAS,EAAE,KAAK;CACnB",
+    "sources": [
+        "test.scss",
+        "_reset.scss",
+        "_colors.scss"
+    ],
+    "names": [],
+    "file": "test.css"
+}

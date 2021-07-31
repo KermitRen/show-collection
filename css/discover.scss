@@ -1,0 +1,112 @@
+@import "colors";
+@import "fonts";
+@import "reset";
+
+#gallery {
+    display:flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    padding: 1.5%;
+    margin-left: 25px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.showPoster {
+    width: 250px;
+    height: 370px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.showPoster img {
+    width: 250px;
+    height: 370px;
+    object-fit: cover;
+}
+
+.showPoster:hover {
+
+    cursor: pointer;
+
+    img {
+        filter: blur(2.5px) brightness(60%);
+    }
+
+    .showHover {
+        visibility: visible;
+    }
+
+    .showInfo, .showAdd {
+        transform: translate(0px,0px);
+        opacity: 1;
+    }
+} 
+
+.showHover {
+    visibility: hidden;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    .showInfo {
+        position: absolute;
+        left: 15px;
+        top: 10px;
+        transform: translate(-100px,0px);
+        opacity: 0.2;
+        transition: transform 0.5s, opacity 0.5s;
+
+        .showName {
+            font-size: 1.2em;
+            text-transform: capitalize;
+        }
+
+        .showGenres {
+            font-size: 0.85em;
+            text-transform: capitalize;
+            margin-top: 8px;
+            width: 150px;
+        }
+    }
+
+    .showAdd {
+        position: absolute;
+        right: 15px;
+        bottom: 10px;
+        transform: translate(100px,0px);
+        opacity: 0.2;
+        transition: transform 0.5s, opacity 0.5s;
+
+        i {
+            font-size: 2.5em;
+        }
+
+        i.add {
+            color: $cinemaGreen;
+        }
+
+        i.remove {
+            color: $cinemaRed1;
+        }
+
+        i:hover + p {
+            visibility: visible;
+        }
+
+        p {
+            visibility: hidden;
+            position: absolute;
+            top: -10px;
+            left: -150px;
+            width: 132px;
+            border-radius: 10px;
+            padding: 5px;
+            background-color: rgba(0,0,0,0.5);
+
+        }
+    }
+}
