@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  color: white;
+  font-size: 16px;
+  font-family: Poppins, sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #800E13;
+  height: 100%;
+  position: relative;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#showcaseContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+}
+
+#showInformation {
+  width: 1000px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin: 20px;
+}
+
+#showInformation #backIcon {
+  font-size: 6em;
+  text-shadow: -2.5px -2.5px 5px rgba(0, 0, 0, 0.4);
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  color: #121212;
+  cursor: pointer;
+}
+
+#showInformation #showText {
+  margin-left: 50px;
+}
+
+#showInformation #showTitle {
+  font-size: 4em;
+  text-transform: capitalize;
+}
+
+#metaInformation {
+  width: 200px;
+  border: 1px solid green;
+  margin: 20px 0px;
+}
+
+#showPoster {
+  width: 550px;
+  margin: 20px;
+  -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+          box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+}
+/*# sourceMappingURL=showcase.css.map */

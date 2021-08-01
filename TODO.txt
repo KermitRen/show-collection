@@ -1,11 +1,16 @@
 
-- Implemet the filters and searchbar
+- Implemet the filters
 - Add minimum 200 shows
 - Shuffle shows on discover page
 - Implement the collection page
-- Design the about page
+- Design the about page (Maybe change name)
 - Implement help button
 - Implement settings button
-- Make Logo
 - Setup github pages
-- Make logo in chrometab
+- Fix page layout, for when row is not filled completely
+- Finish showcase page 
+    Additional information
+    Actors
+    Rating
+    Add/Remove button
+- Remember to showcase the API (probably under about)

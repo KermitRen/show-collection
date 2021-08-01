@@ -1,18 +1,19 @@
 //Global Variables
 var allShows = []; setupAllShows(allShows);
-var gallery;
+var searchBar, gallery;
 
 
 //setting up references
 window.onload = function() {
     gallery = document.getElementById("gallery");
+    searchBar = document.getElementById("navSearchBar");
     reloadShows();
 };
 
 function reloadShows() {
-    let myCollection = window.localStorage.getItem("collection");
-    let filteredList = allShows.filter(show => myCollection.split(", ").includes(show.name));
-    displayShows(filteredList);
+    let myList = allShows.filter(show => showIsInCollection(show.name));
+    let filteredList1 = myList.filter(show => show.name.includes(searchBar.value.toLowerCase()));
+    displayShows(filteredList1);
 }
 
 function displayShows(showList) {
@@ -28,6 +29,8 @@ function displayShows(showList) {
         //Create container
         var posterContainer = document.createElement("div");
         posterContainer.className += "showPoster";
+        let nameOfShow = showList[i].name;
+        posterContainer.onclick = function () {window.location.href="showcase.html?show=" + nameOfShow};
         gallery.appendChild(posterContainer);
 
         //Create image

@@ -1,0 +1,45 @@
+@import "colors";
+@import "fonts";
+@import "reset";
+
+#showcaseContainer {
+    display: flex;
+    align-items: flex-start;
+    flex-flow: row nowrap;
+}
+
+#showInformation {
+    width: 1000px;
+    flex-grow: 1;
+    margin: 20px;
+
+    #backIcon {
+        font-size: 6em;
+        text-shadow: -2.5px -2.5px 5px rgba(0,0,0,0.4);
+        transform-origin: 50% 50%;
+        transform: rotate(180deg);
+        color: $cinemaBlack2;
+        cursor: pointer;
+    }
+
+    #showText {
+        margin-left: 50px;
+    }
+
+    #showTitle {
+        font-size: 4em;
+        text-transform: capitalize;
+    }
+}
+
+#metaInformation {
+    width: 200px;
+    border: 1px solid green;
+    margin: 20px 0px;
+}
+
+#showPoster {
+    width: 550px;
+    margin: 20px;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+}

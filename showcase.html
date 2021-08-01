@@ -10,7 +10,9 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/showcase.css">
     <script src="js/utility.js" type="text/JavaScript"></script>
+    <script src="js/showcase.js" type="text/JavaScript"></script>
 
   </head>
 
@@ -21,7 +23,7 @@
       <a href="discover.html" id="logo"> </a>
       <a href="discover.html" class="navItem">Discover</a> <div class="hBorder"></div>
       <a href="collection.html" class="navItem">My Collection</a> <div class="hBorder"></div>
-      <a id="selectedNavItem" class="navItem">About</a> <div class="hBorder"></div>
+      <a href="about.html" class="navItem">About</a> <div class="hBorder"></div>
       <div id="searchBarContainer">
       </div>
       <i class="material-icons" onclick="alert('Show info box about what the site can do')"> help_outline</i>
@@ -30,8 +32,19 @@
 
     <!-- Main Content -->
     <div id="mainContent">
-      
-      
+        <div id="showcaseContainer">
+            <div id="showInformation">
+                <i id="backIcon" class="material-icons" onclick="window.history.back();"> forward</i>
+                <div id="showText">
+                    <p id="showTitle"></p>
+                    <p id="showGenres"></p>
+                </div>
+            </div>
+            <div id="metaInformation">
+                <p>testests</p>
+            </div>
+            <img id="showPoster" src="" alt="Show Poster">
+        </div>
     </div>
 
   </body>

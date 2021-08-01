@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show Collection</title>
+    <link rel="icon" href="images/UI/logo_notext.png">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/navigation.css">
@@ -25,11 +26,11 @@
       <a href="about.html" class="navItem">About</a> <div class="hBorder"></div>
       <div id="searchBarContainer">
         <span>
-          <input type="text" autocomplete="off" spellcheck="false" placeholder="search">
+          <input id="navSearchBar" type="text" autocomplete="off" spellcheck="false" placeholder="search" oninput="reloadShows()">
         </span>
       </div>
       <i class="material-icons" onclick="alert('Show info box about what the site can do')"> help_outline</i>
-      <i class="material-icons" onclick="alert('Go to settings page')"> settings</i>
+      <i class="material-icons" onclick="alert('Show settings page')"> settings</i>
     </div>
 
     <!-- Main Content -->

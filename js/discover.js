@@ -1,13 +1,21 @@
 //Global Variables
 var allShows = []; setupAllShows(allShows);
-var gallery;
+var searchBar, gallery;
 
 
 //setting up references
 window.onload = function() {
     gallery = document.getElementById("gallery");
+    searchBar = document.getElementById("navSearchBar");
+    let querystring = window.location.search;
+    console.log(querystring);
     displayShows(allShows);
 };
+
+function reloadShows() {
+    let filteredList1 = allShows.filter(show => show.name.includes(searchBar.value.toLowerCase()));
+    displayShows(filteredList1);
+}
 
 function displayShows(showList) {
 
@@ -22,6 +30,8 @@ function displayShows(showList) {
         //Create container
         var posterContainer = document.createElement("div");
         posterContainer.className += "showPoster";
+        let nameOfShow = showList[i].name;
+        posterContainer.onclick = function () {window.location.href="showcase.html?show=" + nameOfShow};
         gallery.appendChild(posterContainer);
 
         //Create image
