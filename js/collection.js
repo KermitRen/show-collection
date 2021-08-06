@@ -1,5 +1,5 @@
 //Global Variables
-var allShows = []; setupAllShows(allShows);
+var myCollection = []; JSON.parse(window.localStorage.getItem("collection"));
 var searchBar, gallery;
 
 
@@ -7,13 +7,16 @@ var searchBar, gallery;
 window.onload = function() {
     gallery = document.getElementById("gallery");
     searchBar = document.getElementById("navSearchBar");
-    reloadShows();
+    new Promise((resolve, reject) => {
+        resolve(myCollection = JSON.parse(window.localStorage.getItem("collection")));
+    }).then(reloadShows());
 };
 
 function reloadShows() {
-    let myList = allShows.filter(show => showIsInCollection(show.name));
-    let filteredList1 = myList.filter(show => show.name.includes(searchBar.value.toLowerCase()));
-    displayShows(filteredList1);
+    if(myCollection != null) {
+        let filteredList = myCollection.filter(show => show.name.toLowerCase().includes(searchBar.value.toLowerCase()));
+        displayShows(filteredList);
+    }
 }
 
 function displayShows(showList) {
@@ -35,7 +38,7 @@ function displayShows(showList) {
 
         //Create image
         var poster = document.createElement("img");
-        poster.src = "images/" + showList[i].name + ".jpg";
+        poster.src = showList[i].posterPath;
         posterContainer.appendChild(poster);
 
         //Create hover information
@@ -54,7 +57,7 @@ function displayShows(showList) {
 
         var showGenres= document.createElement("p");
         showGenres.className += "showGenres";
-        showGenres.innerHTML = showList[i].genres.join(", ");
+        showGenres.innerHTML = showList[i].genres;
         showInfo.appendChild(showGenres);
 
         var showAdd = document.createElement("div");

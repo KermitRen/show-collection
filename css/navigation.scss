@@ -20,7 +20,7 @@
     height: 70px;
     margin: 0px 50px;
     background-color: $cinemaBlack2;
-    background-image: url(/images/UI/logo.png);
+    background-image: url('../images/UI/logo.png');
 }
 
 .navItem {
@@ -80,4 +80,42 @@
 
 #mainContent {
     margin-top: 70px;
+}
+
+.popupBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    width: 600px;
+    height: 400px;
+    transform: translate(-50%,-50%);
+    background-color: $cinemaBlack2;
+    border-radius: 20px;
+    border: 10px solid $cinemaRed3;
+    padding: 10px;
+    display: none;
+
+    i {
+        font-size: 3em;
+        color: $cinemaRed1;
+        cursor: pointer;
+
+        &:hover {
+            filter: brightness(80%);
+        }
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 1.8em;
+        margin-bottom: 30px;
+        color: $cinemaYellow;
+    }
+
+    p {
+        font-size: 1.2em;
+        width: 80%;
+        margin: auto;
+    }
 }

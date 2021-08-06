@@ -32,4 +32,11 @@ function setupPage(show) {
         console.log(err)
     )
 
+    let testUrl = "".concat(baseURL,"genre/tv/list?api_key=", apiKey, "&language=en-US");
+    fetch(testUrl).then( result =>
+        data = result.json()  
+    ).then( data =>
+        console.log(data)
+    )
+
 }
