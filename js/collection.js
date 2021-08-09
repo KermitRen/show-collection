@@ -1,5 +1,4 @@
 //Global Variables
-var myCollection = []; JSON.parse(window.localStorage.getItem("collection"));
 var searchBar, gallery;
 
 
@@ -7,16 +6,45 @@ var searchBar, gallery;
 window.onload = function() {
     gallery = document.getElementById("gallery");
     searchBar = document.getElementById("navSearchBar");
-    new Promise((resolve, reject) => {
-        resolve(myCollection = JSON.parse(window.localStorage.getItem("collection")));
-    }).then(reloadShows());
+    reloadShows();
 };
 
 function reloadShows() {
+    myCollection = JSON.parse(window.localStorage.getItem("collection"));
     if(myCollection != null) {
-        let filteredList = myCollection.filter(show => show.name.toLowerCase().includes(searchBar.value.toLowerCase()));
-        displayShows(filteredList);
+        let filteredList1 = myCollection.filter(show => show.name.toLowerCase().includes(searchBar.value.toLowerCase()));
+        let filteredList2 = filteredList1.filter(show => show.genres.toLowerCase().includes(findSelectedGenre()));
+        let sortedList = sortList(filteredList2);
+        displayShows(sortedList);
     }
+}
+
+function sortList(list) {
+    
+    if(document.getElementById("collectionSortName").checked) {
+        list.sort((s1, s2) => {
+            if(s1.name < s2.name) {
+                return -1;
+            } else if(s1.name > s2.name) {
+                return 1;
+            } else {
+                return 0;
+            }
+        })
+    } else if(document.getElementById("collectionSortRating").checked){
+        list.sort((s1, s2) => {
+            let s1Rating = window.localStorage.getItem(s1.id) ?? 0;
+            let s2Rating = window.localStorage.getItem(s2.id) ?? 0;
+            if(s1Rating > s2Rating) {
+                return -1;
+            } else if(s1Rating < s2Rating) {
+                return 1;
+            } else {
+                return 0;
+            }
+        })
+    }
+    return list;
 }
 
 function displayShows(showList) {
@@ -29,16 +57,25 @@ function displayShows(showList) {
     //Add all shows in the showList ot the gallery
     for(var i = 0; i < showList.length; i++) {
 
+        let sName = showList[i].name;
+        let sID = showList[i].id;
+        let sGenres = showList[i].genres;
+        let sPoster = showList[i].posterPath;
+
         //Create container
         var posterContainer = document.createElement("div");
         posterContainer.className += "showPoster";
-        let nameOfShow = showList[i].name;
-        posterContainer.onclick = function () {window.location.href="showcase.html?show=" + nameOfShow};
+        let buttonMask = ("".concat("addButton",i));
+        posterContainer.onclick = function (e) {
+            if(e.target.id != buttonMask) {
+                window.location.href="showcase.html?show=" + sID;
+            }
+        };
         gallery.appendChild(posterContainer);
 
         //Create image
         var poster = document.createElement("img");
-        poster.src = showList[i].posterPath;
+        poster.src = sPoster;
         posterContainer.appendChild(poster);
 
         //Create hover information
@@ -52,12 +89,12 @@ function displayShows(showList) {
 
         var showName = document.createElement("p");
         showName.className += "showName";
-        showName.innerHTML = showList[i].name;
+        showName.innerHTML = sName;
         showInfo.appendChild(showName);
 
         var showGenres= document.createElement("p");
         showGenres.className += "showGenres";
-        showGenres.innerHTML = showList[i].genres;
+        showGenres.innerHTML = sGenres;
         showInfo.appendChild(showGenres);
 
         var showAdd = document.createElement("div");
@@ -65,7 +102,8 @@ function displayShows(showList) {
         hoverContainer.appendChild(showAdd);
 
         var addIcon = document.createElement("i");
-        addIcon.onclick = function() { addShow(this); };
+        addIcon.id = buttonMask;
+        addIcon.onclick = function() {toggleShow(sName, sGenres, sPoster, sID, buttonMask); reloadShows(); };
         showAdd.appendChild(addIcon);
 
         var addIconTooltip = document.createElement("p");
@@ -73,5 +111,25 @@ function displayShows(showList) {
         addIconTooltip.innerHTML = "Add show to your collection";
         showAdd.appendChild(addIconTooltip);
         flipAddIcon(addIcon, !showIsInCollection(showList[i].name));
+
+        //Create rating
+        var ratingContainer = document.createElement("div");
+        ratingContainer.className += "ratingContainer";
+        posterContainer.appendChild(ratingContainer);
+
+        var starIcon = document.createElement("i");
+        starIcon.className += "material-icons";
+        starIcon.innerHTML = "star";
+        ratingContainer.appendChild(starIcon);
+
+        var rating = document.createElement("p");
+        if(window.localStorage.getItem(sID) != null) {
+            rating.innerHTML = "".concat(window.localStorage.getItem(sID)/10," / 10");
+        } else {
+            starIcon.style.display = "none";
+            rating.innerHTML = "-";
+        }
+        rating.className += "ratingText";
+        ratingContainer.appendChild(rating);
     }
 }

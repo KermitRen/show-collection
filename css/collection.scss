@@ -2,3 +2,31 @@
 @import "fonts";
 @import "reset";
 @import "discover";
+
+.showPoster {
+    height: auto;
+
+    .ratingContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        i {
+            color: $cinemaYellow;
+            margin-right: 5px;
+            transform: translate(0px, -1px);
+        }
+
+        .ratingText {
+            text-align: center;
+            color: $cinemaYellow;
+            font-weight: 600;
+        }
+
+    }
+
+}
+
+.showHover {
+    height: 370px;
+}

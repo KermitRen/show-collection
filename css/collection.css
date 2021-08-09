@@ -174,4 +174,37 @@ body::-webkit-scrollbar {
   padding: 5px;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.showPoster {
+  height: auto;
+}
+
+.showPoster .ratingContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.showPoster .ratingContainer i {
+  color: #fcc426;
+  margin-right: 5px;
+  -webkit-transform: translate(0px, -1px);
+          transform: translate(0px, -1px);
+}
+
+.showPoster .ratingContainer .ratingText {
+  text-align: center;
+  color: #fcc426;
+  font-weight: 600;
+}
+
+.showHover {
+  height: 370px;
+}
 /*# sourceMappingURL=collection.css.map */

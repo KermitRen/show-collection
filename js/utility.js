@@ -10,10 +10,8 @@ function toggleFilters() {
     }
 }
 
-function addShow(iconTag) {
-    let showName = iconTag.parentElement.parentElement.children[0].children[0].innerHTML;
-    let showGenres = iconTag.parentElement.parentElement.children[0].children[1].innerHTML;
-    let posterPath = iconTag.parentElement.parentElement.parentElement.children[0].src;
+function toggleShow(showName, showGenres, posterPath, showID, iconTagid) {
+    let iconTag = document.getElementById(iconTagid);
     let oldCollection = JSON.parse(window.localStorage.getItem("collection"));
     if(oldCollection == null) {
         oldCollection = [];
@@ -23,12 +21,13 @@ function addShow(iconTag) {
     if(!showIsInCollection(showName)) {
         //Add Show
         flipAddIcon(iconTag, false);
-        oldCollection.push({name: showName, genres: showGenres, posterPath: posterPath});
+        oldCollection.push({name: showName, genres: showGenres, posterPath: posterPath, id: showID});
         window.localStorage.setItem("collection", JSON.stringify(oldCollection));
     } else {
         //Remove Show
         flipAddIcon(iconTag, true);
         let newCollection = oldCollection.filter(s => s.name != showName);
+        window.localStorage.removeItem(showID);
         window.localStorage.setItem("collection", JSON.stringify(newCollection));
     }
 }
@@ -83,30 +82,38 @@ function genreIdMap(genreID) {
     }
 }
 
-function setupAllShows(allShows) {
-    allShows.push({name:"stranger things", genres:["drama","sci-fi","horror","mystery"]})
-    allShows.push({name:"mindhunter", genres:["drama", "crime", "thriller"]})
-    allShows.push({name:"game of thrones", genres:["action","adventure","fantasy","drama"]})
-    allShows.push({name:"rick and morty", genres:["sci-fi", "animation", "comedy", "adventure"]})
-    allShows.push({name:"the haunting of bly manor", genres:["drama","horror","mystery","romance"]})
-    allShows.push({name:"the queens gambit", genres:["drama"]})
-    allShows.push({name:"the umbrella academy", genres:["action","comedy","adventure"]})
-    allShows.push({name:"westworld", genres:["sci-fi", "mystery","drama"]})
-    allShows.push({name:"breaking bad", genres:["crime", "drama","thriller"]})
-    allShows.push({name:"the walking dead", genres:["drama","horror","thriller"]})
-    allShows.push({name:"friends", genres:["comedy","sitcom","romance"]})
-    allShows.push({name:"how i met your mother", genres:["comedy","sitcom","romance"]})
-    allShows.push({name:"chernobyl", genres:["drama","thriller","history"]})
-    allShows.push({name:"modern family", genres:["comedy","sitcom"]})
-    allShows.push({name:"the mandalorian", genres:["adventure","sci-fi","action"]})
-    allShows.push({name:"the boys", genres:["action","drama"]})
-    allShows.push({name:"the witcher", genres:["action","fantasy","adventure"]})
-    allShows.push({name:"american horror story", genres:["horror","drama","thriller"]})
-    allShows.push({name:"13 reasons why", genres:["drama","mystery","thriller"]})
-    allShows.push({name:"lucifer", genres:["crime","drama","fantasy"]})
-    allShows.push({name:"brooklyn nine-nine", genres:["comedy","sitcom","crime"]})
-    allShows.push({name:"community", genres:["comedy","sitcom"]})
-    allShows.push({name:"black mirror", genres:["sci-fi","drama","thriller"]})
+function collectionSortClick(checkbox) {
+    let checkboxes = document.getElementsByClassName("collectionSortCheckbox");
+    for(var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = false;
+    }
+    checkbox.checked = true;
+    reloadShows();
+}
 
-    //allShows.push({name:"", genres:[]})
+function genreFilterClick(checkbox) {
+    let checkboxes = document.getElementsByClassName("genreFilterCheckbox");
+    for(var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = false;
+    }
+    checkbox.checked = true;
+    reloadShows();
+}
+
+function discoverCheckClick(checkbox) {
+    let checkboxes = document.getElementsByClassName("discoverCheckbox");
+    for(var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = false;
+    }
+    checkbox.checked = true;
+    changeDiscoverFunction();
+}
+
+function findSelectedGenre() {
+    let checkboxes = document.getElementsByClassName("genreFilterCheckbox");
+    for(var i = 0; i < checkboxes.length; i++) {
+        if(checkboxes[i].checked) {
+            return checkboxes[i].id;
+        }
+    }
 }

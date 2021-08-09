@@ -31,7 +31,7 @@
         </span>
       </div>
       <i class="material-icons" onclick="loadPopup('navHelpPopup')"> help_outline</i>
-      <i class="material-icons" onclick="loadPopup('navSettingsPopup')"> settings</i>
+      <i class="material-icons" onclick="window.location.href='discover.html'"> home</i>
     </div>
 
     <!-- Main Content -->
@@ -40,7 +40,29 @@
       <!-- Filter Tab -->
       <div id="filterTab">
         <div id="filters">
-          <h2>Select Filters here</h2>
+          <div id="filterContainer">
+            <h2 class="filterHeader">Sort by</h2>
+            <div class="checkboxContainer"><input id="collectionSortName" class="collectionSortCheckbox" onclick="collectionSortClick(this)" type="checkbox" checked="true"><span>Name</span> </div>
+            <div class="checkboxContainer"><input id="collectionSortRating"class="collectionSortCheckbox" onclick="collectionSortClick(this)" type="checkbox"><span>Rating</span> </div>
+            <hr>
+  
+            <h2 class="filterHeader">Genre Filter</h2>
+            <div class="checkboxContainer"><input class="genreFilterCheckbox" onclick="genreFilterClick(this)" type="checkbox" checked="true"><span>All</span> </div>
+            <div class="checkboxContainer"><input id="action" class="genreFilterCheckbox" onclick="genreFilterClick(this)" type="checkbox"><span>Action</span> </div>
+            <div class="checkboxContainer"><input id="adventure"class="genreFilterCheckbox" onclick="genreFilterClick(this)" type="checkbox"><span>Adventure</span>  </div>
+            <div class="checkboxContainer"><input id="animation" class="genreFilterCheckbox" onclick="genreFilterClick(this)" type="checkbox"><span>Animation</span>  </div>
+            <div class="checkboxContainer"><input id="comedy" class="genreFilterCheckbox" onclick="genreFilterClick(this)" type="checkbox"><span>Comedy</span>  </div>
+            <div class="checkboxContainer"><input id="crime" class="genreFilterCheckbox" onclick="genreFilterClick(this)" type="checkbox"><span>Crime</span>  </div>
+            <div class="checkboxContainer"><input id="documentary" class="genreFilterCheckbox" onclick="genreFilterClick(this)" type="checkbox"><span>Documentary</span>  </div>
+            <div class="checkboxContainer"><input id="drama" class="genreFilterCheckbox" onclick="genreFilterClick(this)" type="checkbox"><span>Drama</span>  </div>
+            <div class="checkboxContainer"><input id="family" class="genreFilterCheckbox" onclick="genreFilterClick(this)" type="checkbox"><span>Family</span>  </div>
+            <div class="checkboxContainer"><input id="kids" class="genreFilterCheckbox" onclick="genreFilterClick(this)" type="checkbox"><span>Kids</span>  </div>
+            <div class="checkboxContainer"><input id="mystery" class="genreFilterCheckbox" onclick="genreFilterClick(this)" type="checkbox"><span>Mystery</span>  </div>
+            <div class="checkboxContainer"><input id="reality" class="genreFilterCheckbox" onclick="genreFilterClick(this)" type="checkbox"><span>Reality</span>  </div>
+            <div class="checkboxContainer"><input id="sci-fi" class="genreFilterCheckbox" onclick="genreFilterClick(this)" type="checkbox"><span>Sci-fi</span> </div>
+            <div class="checkboxContainer"><input id="fantasy" class="genreFilterCheckbox" onclick="genreFilterClick(this)" type="checkbox"><span>Fantasy</span> </div>
+            <div class="checkboxContainer"><input id="western" class="genreFilterCheckbox" onclick="genreFilterClick(this)" type="checkbox"><span>Western</span> </div>
+          </div>
         </div>
         <div id="filterHandle" onclick="toggleFilters()">
           <i id="filterHandleIcon" class="material-icons">keyboard_arrow_right</i>
@@ -48,23 +70,7 @@
       </div>
       
       <!-- Tv Show Gallery -->
-      <div id="gallery">
-
-        <div class="showPoster">
-          <img src="images/stranger things.jpg">
-          <div class="showHover">
-            <div class="showInfo">
-              <p class="showName">Stranger Things</p>  
-              <p class="showGenres">Mystery, Horror, Drama, Sci-Fi</p> 
-            </div>
-            <div class="showAdd">
-              <i class="material-icons">add_circle_outline</i>
-              <p class="addIconTooltip">Add show to your collection</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <div id="gallery"></div>
     </div>
 
     <!-- Help & Settings -->
@@ -74,12 +80,6 @@
       <p>Show Collection is a storage website for popular tv-shows and series.
         You can use this site to disocver new shows, as well as keep track of which shows you have already watched
         and which shows you want to watch later.   </p>
-    </div>
-
-    <div id="navSettingsPopup" class="popupBox">
-      <i class="material-icons" onclick="closePopup('navSettingsPopup')">cancel</i>
-      <h2>Settings</h2>
-      <p>There should probably be some actual settings here </p>
     </div>
 
   </body>

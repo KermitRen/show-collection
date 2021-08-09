@@ -1,10 +1,5 @@
 
-- Implemet the filters
-- Add minimum 200 shows
-- Shuffle shows on discover page?
-- Implement the collection page
 - Design the about page (Maybe change name)
-- Implement settings button
 - Setup github pages
 - Fix page layout, for when row is not filled completely
 - Finish showcase page 

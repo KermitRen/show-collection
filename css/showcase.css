@@ -34,6 +34,9 @@ body::-webkit-scrollbar {
   -webkit-box-direction: normal;
       -ms-flex-flow: row nowrap;
           flex-flow: row nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 #showInformation {
@@ -57,17 +60,176 @@ body::-webkit-scrollbar {
 
 #showInformation #showText {
   margin-left: 50px;
+  height: 80%;
 }
 
 #showInformation #showTitle {
   font-size: 4em;
+  font-weight: 500;
   text-transform: capitalize;
+}
+
+#showInformation #showDescription {
+  margin-top: 10px;
+  padding: 10px;
+  font-style: italic;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#showInformation #castContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+  position: fixed;
+  width: 1000px;
+  bottom: 20px;
+}
+
+#showInformation #castContainer .actorContainer {
+  margin-right: 15px;
+  width: 150px;
+}
+
+#showInformation #castContainer img {
+  width: inherit;
+}
+
+#showInformation #castContainer p {
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 0.9em;
+}
+
+#showInformation #castContainer p:hover {
+  white-space: normal;
+}
+
+#showInformation #castContainer .actorName {
+  color: #fcc426;
+}
+
+#showInformation #castContainer .characterName {
+  margin-bottom: 10px;
+}
+
+#showInformation #castContainer::-webkit-scrollbar {
+  height: 15px;
+}
+
+#showInformation #castContainer::-webkit-scrollbar-track {
+  background-color: #640D14;
+}
+
+#showInformation #castContainer::-webkit-scrollbar-thumb {
+  background-color: #121212;
 }
 
 #metaInformation {
   width: 200px;
-  border: 1px solid green;
-  margin: 20px 0px;
+  margin: 40px 0px;
+  position: relative;
+}
+
+#metaInformation #rateButton {
+  width: 180px;
+  height: 60px;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 3px solid #fcc426;
+  border-radius: 15px;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+#metaInformation #rateButton i {
+  font-size: 1.8em;
+  color: #fcc426;
+  margin-right: 5px;
+}
+
+#metaInformation #rateButton p {
+  font-size: 1.5em;
+  color: #fcc426;
+}
+
+#metaInformation #rateButton:hover {
+  background-color: #640D14;
+}
+
+#metaInformation #ratePopup {
+  width: 300px;
+  height: 120px;
+  display: none;
+  position: absolute;
+  top: 70px;
+  left: -60px;
+  background-color: #121212;
+  border-radius: 15px;
+  padding: 10px;
+  border: 6px solid #640D14;
+}
+
+#metaInformation #ratePopup input {
+  width: 200px;
+  height: 15px;
+  margin: 10px 30px;
+  border-radius: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  outline: none;
+  overflow: hidden;
+}
+
+#metaInformation #ratePopup input::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  color: #fcc426;
+  height: 15px;
+}
+
+#metaInformation #ratePopup input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #d1a015;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-box-shadow: -107px 0 0 100px #fcc426;
+          box-shadow: -107px 0 0 100px #fcc426;
+}
+
+#metaInformation #ratePopup p {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#metaInformation #ratePopup #popupValue {
+  color: #fcc426;
+  font-weight: 500;
+}
+
+#metaInformation #ratePopup i {
+  position: absolute;
+  font-size: 2em;
+  cursor: pointer;
+  color: #AD2831;
+  bottom: 5px;
+  right: 5px;
 }
 
 #showPoster {

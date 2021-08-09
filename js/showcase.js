@@ -1,42 +1,135 @@
 //Global Variables
-var showName;
+var baseURL = "https://api.themoviedb.org/3/";
 var apiKey = "0e657fa9149b1bbf497985c5de06f62d";
+var idOfShow;
 
 window.onload = function() {
-
-    //setting up references
-    showName = document.getElementById("showTitle");
 
     //Getting URL parameter
     let querystring = window.location.search;
     if(querystring.startsWith("?show=")) {
-        var show = querystring.substring(6,querystring.length).replaceAll("%20", " ");
+        var showID = querystring.substring(6,querystring.length);
+        idOfShow = showID;
     }
-    showName.innerHTML = show;
 
-    setupPage(show);
+    requestInfo(showID);
 };
 
-function setupPage(show) {
+function requestInfo(showID) {
 
-    let baseURL = "https://api.themoviedb.org/3/"
+    //Requesting the show details
+    let url = "".concat(baseURL,"tv/", showID,"?api_key=",apiKey,"&language=en-US");
 
-    let url = "".concat(baseURL,"search/tv?api_key=",apiKey,"&language=en-US","&query=",show);
     fetch(url).then( result => 
         data = result.json()
     ).then( data => {
-        let poster = document.getElementById("showPoster");
-        let posterImgPath = "".concat("https://image.tmdb.org/t/p/w500/",data.results[0].poster_path);
-        poster.src = posterImgPath;
+        console.log(data);
+        setupPage(data);
     }).catch( err => 
         console.log(err)
     )
 
-    let testUrl = "".concat(baseURL,"genre/tv/list?api_key=", apiKey, "&language=en-US");
-    fetch(testUrl).then( result =>
-        data = result.json()  
-    ).then( data =>
-        console.log(data)
-    )
+}
 
+function setupPage(showData) {
+
+    //Setup left info block
+    
+    //Title
+    document.getElementById("showTitle").innerHTML = showData.name;
+
+    //Genres
+    let genreList = "";
+    for(var j = 0; j < showData.genres.length;j++) {
+        genreList += genreIdMap(showData.genres[j].id)
+        if( j < showData.genres.length - 1) {
+            genreList += ", ";
+        }
+    }
+    document.getElementById("showGenres").innerHTML = genreList;
+
+    //Airtime
+    let airTimeString = ""
+    airTimeString = showData.first_air_date.substring(0, 4);
+    if(!showData.in_production) {
+        airTimeString += "".concat(" - ", showData.last_air_date.substring(0, 4));
+    } else {
+        airTimeString += " &rarr;";
+    }
+    document.getElementById("showAirtime").innerHTML = airTimeString;
+
+    //Seasons
+    document.getElementById("showSeasons").innerHTML = "".concat(showData.number_of_seasons, " Seasons");
+
+    //Description
+    document.getElementById("showDescription").innerHTML = showData.overview;
+
+    //Rating
+    if(showIsInCollection(showData.name)) {
+        document.getElementById("rateButton").style.visibility = "visible";
+        updateRating();
+    }
+
+    //Setup poster
+    let posterImgPath = "".concat("https://image.tmdb.org/t/p/w500/",showData.poster_path);
+    document.getElementById("showPoster").src = posterImgPath;
+
+    //Setup cast
+    let castUrl = "".concat(baseURL,"tv/", showData.id,"/credits?api_key=",apiKey,"&language=en-US");
+    let castContainer = document.getElementById("castContainer");
+    fetch(castUrl).then( result =>
+         data = result.json()
+    ).then( data => {
+        console.log(data);
+        for(var i = 0; i < data.cast.length; i++) {
+            if(data.cast[i].profile_path != null) {
+                let actorContainer = document.createElement("div");
+                actorContainer.className += "actorContainer";
+                castContainer.appendChild(actorContainer);
+    
+                let actorImage = document.createElement("img");
+                actorImage.alt = data.cast[i].name + "-picture";
+                actorImage.src = "".concat("https://image.tmdb.org/t/p/w185/",data.cast[i].profile_path);
+                actorContainer.appendChild(actorImage);
+    
+                let actorName = document.createElement("p");
+                actorName.innerHTML = data.cast[i].name;
+                actorName.className += "actorName";
+                actorContainer.appendChild(actorName);
+    
+                let actorCharacter = document.createElement("p");
+                actorCharacter.innerHTML = data.cast[i].character;
+                actorCharacter.className += "characterName";
+                actorContainer.appendChild(actorCharacter);
+            }
+        }
+    })
+
+}
+
+function updateRating() {
+    console.log(window.localStorage.getItem(idOfShow));
+    if(window.localStorage.getItem(idOfShow) != null) {
+        console.log("test");
+        let rateButton = document.getElementById("rateButton");
+        rateButton.children[0].innerHTML = "star";
+        rateButton.children[1].innerHTML = "".concat(window.localStorage.getItem(idOfShow)/10, " / 10");
+        document.getElementById("valueSlider").value = window.localStorage.getItem(idOfShow);
+        updateRatingValue(document.getElementById("valueSlider"));
+    }
+}
+
+function openRatingPopup() {
+    document.getElementById("ratePopup").style.display = "block";
+}
+
+function closeRatingPopup() {
+    document.getElementById("ratePopup").style.display = "none";
+    window.localStorage.setItem(idOfShow, document.getElementById("valueSlider").value);
+    updateRating();
+}
+
+function updateRatingValue(slider) {
+    let sliderText = "".concat(slider.value/10, " / 10");
+    document.getElementById("popupValue").innerHTML = sliderText;
 }

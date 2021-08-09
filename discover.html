@@ -31,7 +31,7 @@
         </span>
       </div>
       <i class="material-icons" onclick="loadPopup('navHelpPopup')"> help_outline</i>
-      <i class="material-icons" onclick="loadPopup('navSettingsPopup')"> settings</i>
+      <i class="material-icons" onclick="window.location.href='discover.html'"> home</i>
     </div>
 
     <!-- Main Content -->
@@ -40,7 +40,11 @@
       <!-- Filter Tab -->
       <div id="filterTab">
         <div id="filters">
-          <h2>Select Filters here</h2>
+          <div id="filterContainer">
+            <h2 class="filterHeader">Discover</h2>
+            <div class="checkboxContainer"><input id="discoverCheckPopular" class="discoverCheckbox" onclick="discoverCheckClick(this)" type="checkbox" checked="true"><span>Popular</span> </div>
+            <div class="checkboxContainer"><input id="discoverCheckTopRated" class="discoverCheckbox" onclick="discoverCheckClick(this)" type="checkbox"><span>Top Rated</span> </div>
+          </div>
         </div>
         <div id="filterHandle" onclick="toggleFilters()">
           <i id="filterHandleIcon" class="material-icons">keyboard_arrow_right</i>
@@ -48,23 +52,8 @@
       </div>
       
       <!-- Tv Show Gallery -->
-      <div id="gallery">
+      <div id="gallery"> </div>
 
-        <div class="showPoster">
-          <img src="images/stranger things.jpg">
-          <div class="showHover">
-            <div class="showInfo">
-              <p class="showName">Stranger Things</p>  
-              <p class="showGenres">Mystery, Horror, Drama, Sci-Fi</p> 
-            </div>
-            <div class="showAdd">
-              <i class="material-icons" onclick="addShow(this)">add_circle_outline</i>
-              <p class="addIconTooltip">Add show to your collection</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
     </div>
 
     <!-- Help & Settings -->
@@ -74,12 +63,6 @@
       <p>Show Collection is a storage website for popular tv-shows and series.
         You can use this site to disocver new shows, as well as keep track of which shows you have already watched
         and which shows you want to watch later.   </p>
-    </div>
-
-    <div id="navSettingsPopup" class="popupBox">
-      <i class="material-icons" onclick="closePopup('navSettingsPopup')">cancel</i>
-      <h2>Settings</h2>
-      <p>There should probably be some actual settings here </p>
     </div>
 
   </body>

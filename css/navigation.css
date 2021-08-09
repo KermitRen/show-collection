@@ -105,12 +105,12 @@ body::-webkit-scrollbar {
 #navbar > i {
   color: #AD2831;
   font-size: 2.5em;
-  padding: 10px;
   cursor: pointer;
+  margin-right: 10px;
 }
 
 #mainContent {
-  margin-top: 70px;
+  padding-top: 70px;
 }
 
 .popupBox {

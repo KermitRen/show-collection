@@ -3,6 +3,7 @@ function loadPopup(popUpid) {
     document.getElementById(popUpid).style.display = "block";
     document.getElementById("mainContent").style.filter = "blur(5px)";
     document.getElementById("navbar").style.filter = "blur(5px)";
+    document.getElementById(popUpid).style.filter = "";
 }
 
 function closePopup(popUpid) {

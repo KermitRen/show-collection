@@ -13,8 +13,7 @@
     height: 100%;
     float: left;
     background-color: $cinemaRed4;
-    text-align: center;
-    transition: width 1s;
+    transition: width 0.3s;
     overflow: hidden;
 }
 
@@ -33,7 +32,7 @@
         transform-origin: 50% 50%;
         transform: translate(-20%,0) rotate(0deg);
         top: 42%;
-        transition: transform 0.5s;
+        transition: transform 0.3s;
     }
 }
 
@@ -41,4 +40,54 @@
 #filterHandle:hover {
     filter:brightness(80%);
     cursor: pointer;
+}
+
+
+#filterContainer {
+    padding: 10px;
+    overflow: hidden;
+
+    .filterHeader {
+        font-size: 1.5em;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 15px;
+        white-space: nowrap;
+    }
+
+    hr {
+        margin: 20px 0px;
+    }
+
+    .checkboxContainer {
+        height: 27px;
+        overflow: hidden;
+    }
+
+    input {
+        margin-left: 20px;
+        margin-right: 8px;
+        height: 20px;
+        width: 20px;
+        appearance: none;
+        border: 3px solid white;
+        background-color: white;
+        border-radius: 6px;
+        cursor: pointer;
+
+        &:checked {
+            filter: brightness(90%);
+            background-color: $cinemaRed2;
+        }
+    }
+
+    span {
+        text-transform: capitalize;
+        display: inline-block;
+        transform: translate(0px,-3px);
+        font-size: 1.1em;
+    }
+
+    
+
 }

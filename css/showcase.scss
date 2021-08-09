@@ -6,6 +6,7 @@
     display: flex;
     align-items: flex-start;
     flex-flow: row nowrap;
+    justify-content: space-between;
 }
 
 #showInformation {
@@ -24,18 +25,178 @@
 
     #showText {
         margin-left: 50px;
+        height: 80%;
     }
 
     #showTitle {
         font-size: 4em;
+        font-weight: 500;
         text-transform: capitalize;
+    }
+
+    #showGenres {
+
+    }
+
+    #showAirTime {
+
+    }
+
+    #showSeason {
+
+    }
+
+    #showDescription {
+        margin-top: 10px;
+        padding: 10px;
+        font-style: italic;
+        background-color: rgba(0,0,0,0.1);
+    }
+
+    #castContainer {
+        display: flex;
+        overflow-x: auto;
+        position: fixed;
+        width: 1000px;
+        bottom: 20px;
+
+        .actorContainer {
+            margin-right: 15px;
+            width: 150px;
+        }
+
+        img {
+            width: inherit;
+        }
+
+        p {
+            text-align: center;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-size: 0.9em;
+
+            &:hover {
+                white-space: normal;
+            }
+        }
+        
+        .actorName {
+            color: $cinemaYellow;
+        }
+
+        .characterName {
+            margin-bottom: 10px;
+        }
+    }
+
+    #castContainer::-webkit-scrollbar {
+        height: 15px;
+    }
+
+    #castContainer::-webkit-scrollbar-track {
+        background-color: $cinemaRed3;
+    }
+
+    #castContainer::-webkit-scrollbar-thumb {
+        background-color: $cinemaBlack2;
     }
 }
 
 #metaInformation {
     width: 200px;
-    border: 1px solid green;
-    margin: 20px 0px;
+    margin: 40px 0px;
+    position: relative;
+
+    #rateButton {
+        width: 180px;
+        height: 60px;
+        margin: auto;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid $cinemaYellow;
+        border-radius: 15px;
+        cursor: pointer;
+        visibility: hidden;
+
+        i {
+            font-size: 1.8em;
+            color: $cinemaYellow;
+            margin-right: 5px;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: $cinemaYellow;
+        }
+
+        &:hover {
+            background-color: $cinemaRed3;
+        }
+
+    }
+
+    #ratePopup {
+        width: 300px;
+        height: 120px;
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: -60px;
+        background-color: $cinemaBlack2;
+        border-radius: 15px;
+        padding: 10px;
+        border: 6px solid $cinemaRed3;
+
+        input {
+            width: 200px;
+            height: 15px;
+            margin: 10px 30px; 
+            border-radius: 10px;
+            -webkit-appearance: none; 
+            appearance: none;
+            outline: none;
+            overflow: hidden;
+        }
+
+        input::-webkit-slider-runnable-track {
+            -webkit-appearance: none;
+            color: $cinemaYellow;
+            height: 15px;
+        }
+
+        input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 15px;
+            height: 15px;
+            background: $cinemaYellow2;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: -107px 0 0 100px $cinemaYellow;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        #popupValue {
+            color: $cinemaYellow;
+            font-weight: 500;
+        }
+
+        i {
+            position: absolute;
+            font-size: 2em;
+            cursor: pointer;
+            color: $cinemaRed1;
+            bottom: 5px;
+            right: 5px;
+        }
+    }
+
 }
 
 #showPoster {
@@ -43,3 +204,4 @@
     margin: 20px;
     box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
 }
+
