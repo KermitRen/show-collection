@@ -1,0 +1,53 @@
+@import "colors";
+@import "fonts";
+@import "reset";
+
+#mainContent {
+    padding: 120px 50px;
+}
+
+h1 {
+    font-size: 2.65em;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+#aboutText {
+    width: 900px;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+#tmdbContainer {
+    margin-top: 50px;
+    width: 700px;
+    display: flex;
+    flex-flow: column nowrap;
+
+    h2 {
+        font-size: 1.2em;
+        font-weight: 500;
+        width: inherit;
+        margin-right: 150px;
+
+        span {
+            font-size: 1em;
+            font-style: italic;
+            padding: 0px 2.5px;
+        }
+    }
+
+    a {
+        background-color: #0d253f;
+        background-image: url(/images/UI/tmdbLogo.svg) ;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 300px;
+        border-radius: 20px;
+        width: 350px;
+        height: 200px;
+        margin-top: 20px;
+    }
+}
+

@@ -3,10 +3,11 @@
 @import "reset";
 
 #gallery {
-    display:flex;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    row-gap: 0px;
+    column-gap: 12px;
     justify-content: space-between;
-    flex-flow: row wrap;
     padding: 1.5%;
     margin-left: 25px;
     overflow-y: auto;

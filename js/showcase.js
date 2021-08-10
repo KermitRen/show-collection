@@ -59,7 +59,7 @@ function setupPage(showData) {
     document.getElementById("showAirtime").innerHTML = airTimeString;
 
     //Seasons
-    document.getElementById("showSeasons").innerHTML = "".concat(showData.number_of_seasons, " Seasons");
+    document.getElementById("showSeasons").innerHTML = "".concat(showData.number_of_seasons, " Seasons"," &nbsp;  (", showData.number_of_episodes," Episodes)");
 
     //Description
     document.getElementById("showDescription").innerHTML = showData.overview;
@@ -95,11 +95,13 @@ function setupPage(showData) {
                 let actorName = document.createElement("p");
                 actorName.innerHTML = data.cast[i].name;
                 actorName.className += "actorName";
+                actorName.setAttribute("data-name", data.cast[i].name);
                 actorContainer.appendChild(actorName);
     
                 let actorCharacter = document.createElement("p");
                 actorCharacter.innerHTML = data.cast[i].character;
                 actorCharacter.className += "characterName";
+                actorCharacter.setAttribute("data-name", data.cast[i].character);
                 actorContainer.appendChild(actorCharacter);
             }
         }

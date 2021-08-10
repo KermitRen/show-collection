@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  color: white;
+  font-size: 16px;
+  font-family: Poppins, sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #800E13;
+  height: 100%;
+  position: relative;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#mainContent {
+  padding: 120px 50px;
+}
+
+h1 {
+  font-size: 2.65em;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+#aboutText {
+  width: 900px;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+#tmdbContainer {
+  margin-top: 50px;
+  width: 700px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+#tmdbContainer h2 {
+  font-size: 1.2em;
+  font-weight: 500;
+  width: inherit;
+  margin-right: 150px;
+}
+
+#tmdbContainer h2 span {
+  font-size: 1em;
+  font-style: italic;
+  padding: 0px 2.5px;
+}
+
+#tmdbContainer a {
+  background-color: #0d253f;
+  background-image: url(/images/UI/tmdbLogo.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 300px;
+  border-radius: 20px;
+  width: 350px;
+  height: 200px;
+  margin-top: 20px;
+}
+/*# sourceMappingURL=about.css.map */

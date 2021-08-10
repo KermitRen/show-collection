@@ -16,7 +16,7 @@
 
     #backIcon {
         font-size: 6em;
-        text-shadow: -2.5px -2.5px 5px rgba(0,0,0,0.4);
+        text-shadow: -2.5px -2.5px 2.5px rgba(0,0,0,0.2);
         transform-origin: 50% 50%;
         transform: rotate(180deg);
         color: $cinemaBlack2;
@@ -24,41 +24,47 @@
     }
 
     #showText {
+        width: 1000px;
         margin-left: 50px;
-        height: 80%;
+        margin-bottom: 25px;
+        height: 400px;
+        cursor: default;
     }
 
     #showTitle {
         font-size: 4em;
         font-weight: 500;
         text-transform: capitalize;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        z-index: 100;
+
+        &:hover {
+            overflow: visible;
+        }
     }
 
     #showGenres {
-
-    }
-
-    #showAirTime {
-
-    }
-
-    #showSeason {
-
+        font-size: 1.2em;
+        margin-bottom: 5px;
     }
 
     #showDescription {
-        margin-top: 10px;
-        padding: 10px;
-        font-style: italic;
-        background-color: rgba(0,0,0,0.1);
+        margin-top: 25px;
+        margin-left: 25px;
+        margin-right: 25px;
+        padding: 15px;
+        border-radius: 10px;
+        word-wrap: break-word;
+        background-color: $cinemaRed3;
     }
 
     #castContainer {
+        margin-left: 50px;
         display: flex;
         overflow-x: auto;
-        position: fixed;
         width: 1000px;
-        bottom: 20px;
 
         .actorContainer {
             margin-right: 15px;
@@ -73,11 +79,22 @@
             text-align: center;
             white-space: nowrap;
             text-overflow: ellipsis;
+            position: relative;
             overflow: hidden;
             font-size: 0.9em;
+            cursor: default;
 
             &:hover {
-                white-space: normal;
+                overflow: visible;
+                visibility: hidden;
+                z-index: 1;
+            }
+
+            &:hover::before {
+                content: attr(data-name);
+                position: absolute;
+                visibility: visible;
+                background-color: $cinemaRed2;
             }
         }
         
@@ -200,6 +217,7 @@
 }
 
 #showPoster {
+    z-index: -1;
     width: 550px;
     margin: 20px;
     box-shadow: 10px 10px 10px rgba(0,0,0,0.4);

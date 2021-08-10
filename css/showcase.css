@@ -49,7 +49,7 @@ body::-webkit-scrollbar {
 
 #showInformation #backIcon {
   font-size: 6em;
-  text-shadow: -2.5px -2.5px 5px rgba(0, 0, 0, 0.4);
+  text-shadow: -2.5px -2.5px 2.5px rgba(0, 0, 0, 0.2);
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
   -webkit-transform: rotate(180deg);
@@ -59,31 +59,49 @@ body::-webkit-scrollbar {
 }
 
 #showInformation #showText {
+  width: 1000px;
   margin-left: 50px;
-  height: 80%;
+  margin-bottom: 25px;
+  height: 400px;
+  cursor: default;
 }
 
 #showInformation #showTitle {
   font-size: 4em;
   font-weight: 500;
   text-transform: capitalize;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  z-index: 100;
+}
+
+#showInformation #showTitle:hover {
+  overflow: visible;
+}
+
+#showInformation #showGenres {
+  font-size: 1.2em;
+  margin-bottom: 5px;
 }
 
 #showInformation #showDescription {
-  margin-top: 10px;
-  padding: 10px;
-  font-style: italic;
-  background-color: rgba(0, 0, 0, 0.1);
+  margin-top: 25px;
+  margin-left: 25px;
+  margin-right: 25px;
+  padding: 15px;
+  border-radius: 10px;
+  word-wrap: break-word;
+  background-color: #640D14;
 }
 
 #showInformation #castContainer {
+  margin-left: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   overflow-x: auto;
-  position: fixed;
   width: 1000px;
-  bottom: 20px;
 }
 
 #showInformation #castContainer .actorContainer {
@@ -99,12 +117,23 @@ body::-webkit-scrollbar {
   text-align: center;
   white-space: nowrap;
   text-overflow: ellipsis;
+  position: relative;
   overflow: hidden;
   font-size: 0.9em;
+  cursor: default;
 }
 
 #showInformation #castContainer p:hover {
-  white-space: normal;
+  overflow: visible;
+  visibility: hidden;
+  z-index: 1;
+}
+
+#showInformation #castContainer p:hover::before {
+  content: attr(data-name);
+  position: absolute;
+  visibility: visible;
+  background-color: #800E13;
 }
 
 #showInformation #castContainer .actorName {
@@ -233,6 +262,7 @@ body::-webkit-scrollbar {
 }
 
 #showPoster {
+  z-index: -1;
   width: 550px;
   margin: 20px;
   -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);

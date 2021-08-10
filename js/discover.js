@@ -1,6 +1,4 @@
 //Variables
-var mostPopular = [];
-var topRated = [];
 var searchBar, gallery;
 var apiKey = "0e657fa9149b1bbf497985c5de06f62d";
 var baseURL = "https://api.themoviedb.org/3/";
@@ -11,7 +9,7 @@ window.onload = function() {
     gallery = document.getElementById("gallery");
     searchBar = document.getElementById("navSearchBar");
     //window.localStorage.clear();
-    findAndDisplayMostPopular();
+    changeDiscoverFunction()
 };
 
 function activateSearchBar(e) {
@@ -28,13 +26,15 @@ function checkSearchBar() {
 
 function changeDiscoverFunction() {
     if(document.getElementById("discoverCheckPopular").checked) {
-        if(mostPopular.length != 0) {
+        let mostPopular = JSON.parse(sessionStorage.getItem("mostPopular"));
+        if(mostPopular != null) {
             displayShowList(mostPopular);
         } else {
             findAndDisplayMostPopular();
         }
     } else if(document.getElementById("discoverCheckTopRated").checked) {
-        if(topRated.length != 0) {
+        let topRated = JSON.parse(sessionStorage.getItem("topRated"));
+        if(topRated != null) {
             displayShowList(topRated);
         } else {
             findAndDisplayTopRated();
@@ -45,15 +45,16 @@ function changeDiscoverFunction() {
 function searchForShow() {
     let searchTerm = searchBar.value.toLowerCase();
     if(searchTerm == "") {
-        displayShowList(mostPopular);
+        changeDiscoverFunction();
     } else {
         let url = "".concat(baseURL,"search/tv?api_key=",apiKey,"&language=en-US","&query=",searchTerm);
         fetch(url).then( results =>
             data = results.json()    
         ).then( data => {
+            console.log(data);
             interestingResults = [];
             for(var i = 0; i < data.results.length;i++) {
-                if(data.results[i].poster_path != null && data.results[i].vote_count > 50){
+                if(data.results[i].poster_path != null && data.results[i].vote_count > (data.results.length * 4)){
                     interestingResults.push(data.results[i]);
                 }
             }
@@ -90,8 +91,8 @@ function findAndDisplayTopRated() {
                         return 0;
                     }
                 })
-                topRated = results;
-                displayShowList(topRated);
+                window.sessionStorage.setItem("topRated", JSON.stringify(results));
+                displayShowList(results);
             }
         })
     }
@@ -125,8 +126,8 @@ function findAndDisplayMostPopular() {
                         return 0;
                     }
                 })
-                mostPopular = results;
-                displayShowList(mostPopular);
+                window.sessionStorage.setItem("mostPopular", JSON.stringify(results));
+                displayShowList(results);
             }
         })
     }
