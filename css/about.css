@@ -67,7 +67,7 @@ h1 {
 
 #tmdbContainer a {
   background-color: #0d253f;
-  background-image: url(/images/UI/tmdbLogo.svg);
+  background-image: url(../images/UI/tmdbLogo.svg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 300px;
