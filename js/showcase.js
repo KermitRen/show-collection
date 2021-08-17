@@ -95,13 +95,13 @@ function setupPage(showData) {
                 let actorName = document.createElement("p");
                 actorName.innerHTML = data.cast[i].name;
                 actorName.className += "actorName";
-                actorName.setAttribute("data-name", data.cast[i].name);
+                actorName.setAttribute("data-name", data.cast[i].name + "\u00A0 \u00A0 \u00A0 ");
                 actorContainer.appendChild(actorName);
     
                 let actorCharacter = document.createElement("p");
                 actorCharacter.innerHTML = data.cast[i].character;
                 actorCharacter.className += "characterName";
-                actorCharacter.setAttribute("data-name", data.cast[i].character);
+                actorCharacter.setAttribute("data-name", data.cast[i].character + "\u00A0 \u00A0 \u00A0 ");
                 actorContainer.appendChild(actorCharacter);
             }
         }

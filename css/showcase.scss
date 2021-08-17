@@ -51,13 +51,27 @@
     }
 
     #showDescription {
-        margin-top: 25px;
+        margin-top: 20px;
         margin-left: 25px;
         margin-right: 25px;
         padding: 15px;
         border-radius: 10px;
         word-wrap: break-word;
         background-color: $cinemaRed3;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    #showDescription::-webkit-scrollbar {
+        display: none;
+    }
+
+    #showDescription::-webkit-scrollbar-track {
+        background-color: $cinemaRed3;
+    }
+
+    #showDescription::-webkit-scrollbar-thumb {
+        background-color: $cinemaBlack2;
     }
 
     #castContainer {
@@ -73,6 +87,7 @@
 
         img {
             width: inherit;
+            height: 225px;
         }
 
         p {
